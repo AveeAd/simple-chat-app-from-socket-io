@@ -6,12 +6,14 @@ const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
 
+const port = process.env.PORT || 5000;
+
+app.use(express.static("dist"));
+app.use("/css", express.static(__dirname + "dist/css"));
+
 app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
-
-app.use(express.static("dist"));
-app.use("/css", exoress.static(__dirname + "dist/css"));
 
 io.on("connection", (socket) => {
   console.log("a user connected");
@@ -23,4 +25,4 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(5000, () => console.log("server listening on port 5000"));
+server.listen(port, () => console.log(`server listening on port ${port}`));
