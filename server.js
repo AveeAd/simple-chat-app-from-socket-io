@@ -10,6 +10,9 @@ app.get("/", (req, res) => {
   res.sendFile(path.join(__dirname, "dist", "index.html"));
 });
 
+app.use(express.static("dist"));
+app.use("/css", exoress.static(__dirname + "dist/css"));
+
 io.on("connection", (socket) => {
   console.log("a user connected");
   socket.on("chat message", (msg) => {
