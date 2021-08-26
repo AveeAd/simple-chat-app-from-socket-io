@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "prod": "node server.js"
+    "start": "node server.js"
   },
   "author": "Kumar Adhikari / Avee",
   "license": "MIT",
